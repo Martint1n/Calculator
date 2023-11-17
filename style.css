@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  background-image: url("./images/synthCosmicBackground.jpg");
+  background-size: cover;
+}
+
+.imageBackground {
+  background-image: url("./images/synthCosmicBackground.jpg");
+}
+
+.containerTitle {
+  display: flex;
+  margin: 0px auto;
+  margin-bottom: 10px;
+  height: 80px;
+  width: 400px;
+  justify-content: center;
+  color: whitesmoke;
+}
+
+.containerCalculator {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 0;
+  border: 1px solid black;
+  margin: 0px auto;
+  height: 550px;
+  width: 400px;
+  justify-content: space-evenly;
+  align-content: space-evenly;
+  background-color: #2e2157;
+  padding: 10px;
+  border-radius: 5%;
+}
+
+.reset {
+  width: 45%;
+  height: 15%;
+  background-color: #ff6da1;
+}
+
+.clear {
+  width: 45%;
+  height: 15%;
+  background-color: #f666ff;
+}
+
+.nombre {
+  width: 21%;
+  height: 15%;
+  background-color: #2de2e6;
+}
+
+.operand {
+  width: 21%;
+  height: 15%;
+  background-color: #ffb263;
+}
+
+.egal {
+  width: 21%;
+  height: 15%;
+  background-color: #ffb263;
+}
+
+.display {
+  border: 1px solid black;
+  margin-top: 10px;
+  width: 350px;
+  height: 50px;
+}

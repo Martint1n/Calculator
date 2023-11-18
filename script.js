@@ -1,18 +1,46 @@
 // function quand on appuie sur =
-function operate(signeOperation, nombreUnUse, nombreDeuxUse) {
-	if (signeOperation == "+") {
-		resultat = nombreUnUse + nombreDeuxUse;
-	} else if (signeOperation == "-") {
-		resultat = nombreUnUse - nombreDeuxUse;
-	} else if (signeOperation == "*") {
-		resultat = nombreUnUse * nombreDeuxUse;
+function operate(operand, nombreUnUse, nombreDeuxUse) {
+	nombreUnUse = +nombreUn.join("");
+	nombreDeuxUse = +nombreDeux.join("");
+	if (nombreDeux.length == 0) {
+		displayDefinitif.innerHTML =
+			"Il manque un nombre pour effectuer une opération";
+		setTimeout(resetAll, 2000);
 	} else {
-		resultat = nombreUnUse / nombreDeuxUse;
+		if (operand == "+") {
+			displayDefinitif.innerHTML = nombreUnUse + nombreDeuxUse;
+		} else if (operand == "-") {
+			displayDefinitif.innerHTML = nombreUnUse - nombreDeuxUse;
+		} else if (operand == "*") {
+			displayDefinitif.innerHTML = nombreUnUse * nombreDeuxUse;
+		} else if (operand == "/") {
+			if (nombreDeux == 0) {
+				displayDefinitif.innerHTML = "On ne divise pas par 0 ici";
+				setTimeout(resetAll, 2000);
+			} else {
+				displayDefinitif.innerHTML = nombreUnUse / nombreDeuxUse;
+			}
+		}
 	}
-	return console.log(resultat);
-	//stocker le resultat en nombreUn (clear then push ou =)
 }
 
+function resetAll() {
+	nombreUn = [];
+	nombreDeux = [];
+	operand = "";
+	displayDefinitif.innerHTML = "";
+	displayTemporaire.innerHTML = "";
+}
+
+function clearPop() {
+	if (operand.length == 0) {
+		nombreUn.pop();
+		displayTemporaire.innerHTML = nombreUn.join("");
+	} else {
+		nombreDeux.pop();
+		displayTemporaire.innerHTML = nombreDeux.join("");
+	}
+}
 let ephemereDisplay = "";
 let operand = "";
 let nombreUn = [];
@@ -24,17 +52,31 @@ const operands = document.getElementsByClassName("operand");
 const reset = document.getElementsByClassName("reset");
 const clear = document.getElementsByClassName("clear");
 const egal = document.getElementsByClassName("egal");
+const displayTemporaire = document.getElementById("displayTemporaire");
+const displayDefinitif = document.getElementById("displayDefinitif");
 const audioNombres = new Audio("./sons/mixkit-sci-fi-click-900.wav");
 const audioOperands = new Audio(
 	"./sons/mixkit-sci-fi-interface-robot-click-901.wav"
 );
 const audioEgal = new Audio("./sons/mixkit-sci-fi-robot-metal-click-1132.wav");
-console.log(nombres);
 
 for (let a = 0; a < operands.length; a++) {
 	operands[a].addEventListener("click", () => {
 		audioOperands.play();
-		operand = operands[a].getAttribute("id");
+		if (operand == "") {
+			if (displayDefinitif.innerHTML == "") {
+				operand = operands[a].getAttribute("id");
+			} else {
+				nombreUn = [displayDefinitif.innerHTML];
+				nombreDeux = [];
+				operand = operands[a].getAttribute("id");
+			}
+		} else {
+			operate(operand, nombreUnUse, nombreDeuxUse);
+			nombreUn = [displayDefinitif.innerHTML];
+			nombreDeux = [];
+			operand = operands[a].getAttribute("id");
+		}
 	});
 }
 
@@ -42,34 +84,28 @@ for (let i = 0; i < nombres.length; i++) {
 	nombres[i].addEventListener("click", () => {
 		audioNombres.play();
 		let ephemereDisplay = nombres[i].getAttribute("id");
-		if (operand.length == 0) {
+		if (operand == "") {
 			nombreUn.push(ephemereDisplay);
+			displayTemporaire.innerHTML = nombreUn.join("");
 		} else {
 			nombreDeux.push(ephemereDisplay);
+			displayTemporaire.innerHTML = "";
+			displayTemporaire.innerHTML = nombreDeux.join("");
 		}
 	});
 }
 
 egal[0].addEventListener("click", () => {
 	audioEgal.play();
-	nombreUnUse = +nombreUn.join("");
-	nombreDeuxUse = +nombreDeux.join("");
-	operate(operand, nombreUnUse, nombreDeuxUse);
-	//creer un div qui affiche operate()
+	setTimeout(function () {
+		operate(operand, nombreUnUse, nombreDeuxUse);
+	}, 2000);
 });
 
 reset[0].addEventListener("click", () => {
-	nombreUn = [];
-	nombreDeux = [];
-	operand = "";
+	resetAll();
 });
 
 clear[0].addEventListener("click", () => {
-	// avec if statement choisir enter nombreUn et nombreDeux
-	// retirer dernier str de nombreUn
-	// retirer dernier str de nombreDeux
+	clearPop();
 });
-
-//creer une liste qui store nombreUN en addant string 1 2 3 si nombreUn est vide
-//jusqu'a appuyer sur un boutton operand puis store nombreDeux
-// puis appuyer sur = affichedisplay et reset la liste

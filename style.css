@@ -1,71 +1,84 @@
 body {
-  margin: 0;
-  background-image: url("./images/synthCosmicBackground.jpg");
-  background-size: cover;
+	margin: 0;
+	background-image: url("./images/synthCosmicBackground.jpg");
+	background-size: cover;
 }
 
 .imageBackground {
-  background-image: url("./images/synthCosmicBackground.jpg");
+	background-image: url("./images/synthCosmicBackground.jpg");
 }
 
 .containerTitle {
-  display: flex;
-  margin: 0px auto;
-  margin-bottom: 10px;
-  height: 80px;
-  width: 400px;
-  justify-content: center;
-  color: whitesmoke;
+	display: flex;
+	margin: 0px auto;
+	margin-bottom: 10px;
+	height: 80px;
+	width: 400px;
+	justify-content: center;
+	color: whitesmoke;
 }
 
 .containerCalculator {
-  display: flex;
-  flex-wrap: wrap;
-  flex-grow: 0;
-  border: 1px solid black;
-  margin: 0px auto;
-  height: 550px;
-  width: 400px;
-  justify-content: space-evenly;
-  align-content: space-evenly;
-  background-color: #2e2157;
-  padding: 10px;
-  border-radius: 5%;
+	display: flex;
+	flex-wrap: wrap;
+	flex-grow: 0;
+	border: 1px solid black;
+	margin: 0px auto;
+	height: 550px;
+	width: 400px;
+	justify-content: space-evenly;
+	align-content: space-evenly;
+	background-color: #2e2157;
+	padding: 10px;
+	border-radius: 5%;
 }
 
 .reset {
-  width: 45%;
-  height: 15%;
-  background-color: #ff6da1;
+	width: 45%;
+	height: 15%;
+	background-color: #ff6da1;
 }
 
 .clear {
-  width: 45%;
-  height: 15%;
-  background-color: #f666ff;
+	width: 45%;
+	height: 15%;
+	background-color: #f666ff;
 }
 
 .nombre {
-  width: 21%;
-  height: 15%;
-  background-color: #2de2e6;
+	width: 21%;
+	height: 15%;
+	background-color: #2de2e6;
 }
 
 .operand {
-  width: 21%;
-  height: 15%;
-  background-color: #ffb263;
+	width: 21%;
+	height: 15%;
+	background-color: #ffb263;
 }
 
 .egal {
-  width: 21%;
-  height: 15%;
-  background-color: #ffb263;
+	width: 21%;
+	height: 15%;
+	background-color: #ffb263;
 }
 
 .display {
-  border: 1px solid black;
-  margin-top: 10px;
-  width: 350px;
-  height: 50px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #ffd319;
+	margin-top: 10px;
+	width: 93%;
+	height: 80px;
+	align-items: end;
+	box-shadow: 5px -5px #ff901f;
+}
+
+.affichage {
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	color: violet;
+	margin-right: 10px;
+	height: 40px;
 }
